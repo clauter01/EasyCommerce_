@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  password  String
+  products  Product[]
+  carts     Cart[]   @relation("UserCarts")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//implementação de carrinho de compras futura
+model Cart {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], name: "UserCarts")
+  products  Product[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//produtos
+model Product {
+  id          Int     @id @default(autoincrement())
+  name        String
+  image_Url   String
+  description String?
+  stock       Int //quantidade de itens no estoque
+  discount    Float?
+  price       Float
+
+  categoryId  Int
+  category    Category @relation(fields: [categoryId], references: [id])
+  ownerId     Int //id do criador do produto
+  owner       User @relation(fields: [ownerId], references: [id])
+  Cart        Cart[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+  products    Product[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

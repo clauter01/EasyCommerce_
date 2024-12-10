@@ -1,0 +1,66 @@
+{
+  "users": [
+    {
+      "email": "admin@gmail.com",
+      "name": "Admin",
+      "password": "123456"
+    },
+    {
+      "email": "clauter@gmail.com",
+      "name": "Clauter",
+      "password": "migo222"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Eletronicos",
+      "description": "Eletronicos"
+    },
+    {
+      "name": "Produtos",
+      "description": "Produtos gerais"
+    }
+  ],
+  "products": [
+    {
+      "name": "Secador de Cabelo",
+      "image_Url": "./img/produto2.jpg",
+      "description": "Um bom secador de cabelo",
+      "stock": 30,
+      "discount": null,
+      "price": 99.9,
+      "categoryId": 1,
+      "ownerId": 1
+    },
+    {
+      "name": "Sabão OMO",
+      "image_Url": "./img/produto1.jpg",
+      "description": "Sabão para suas roupas",
+      "stock": 100,
+      "discount": null,
+      "price": 21.9,
+      "categoryId": 1,
+      "ownerId": 2
+    },
+    {
+      "name": "Óleo de Banho NIVEA",
+      "image_Url": "./img/produto9.jpg",
+      "description": "Um bom óleo de banho",
+      "stock": 100,
+      "discount": null,
+      "price": 19.9,
+      "categoryId": 2,
+      "ownerId": 1
+    },
+    {
+      "name": "Difusor de Cabelo",
+      "image_Url": "./img/produto4.jpg",
+      "description": "para seus cabelos",
+      "stock": 100,
+      "discount": null,
+      "price": 99.9,
+      "categoryId": 2,
+      "ownerId": 1
+    }
+  ]
+}

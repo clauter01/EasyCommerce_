@@ -1,0 +1,31 @@
+@baseUrl = http://localhost:3000
+@token = {{login.response.body.$.token}}
+
+### Login
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "123456"
+}
+
+### Register
+# @name register
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+    "email": "teste@gmail.com",
+    "name": "Teste",
+    "password": "123456"
+}
+
+### Get products
+GET {{baseUrl}}/home/all
+Authorization: bearer {{token}}
+
+### Get one product
+GET {{baseUrl}}/home/1
+Authorization: bearer {{token}}
